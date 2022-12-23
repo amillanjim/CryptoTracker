@@ -21,7 +21,7 @@ class AnimationDialogFragment: BaseDialogFragment<DialogFragmentAnimationBinding
     }
 
     private fun loadNextFragment(){
-        //dismissListener?.openCryptoFragment()
-        dismissListener?.openDetailFragment()
+        dismissListener?.openCryptoFragment()
+        //dismissListener?.openDetailFragment()
     }
 }
