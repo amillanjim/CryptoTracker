@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/trending_container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/medium_padding"
+    android:paddingEnd="@dimen/medium_padding"
+    android:paddingStart="@dimen/dp_0"
+    android:layout_marginBottom="@dimen/small_margin"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="@drawable/bg_card_my_coins">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_coin"
+        android:layout_width="@dimen/profile_image_size"
+        android:layout_height="@dimen/profile_image_size"
+        android:layout_margin="@dimen/medium_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_coin_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/medium_margin"
+        style="@style/Header1"
+        tools:text="@string/BTC"
+        app:layout_constraintStart_toEndOf="@id/iv_coin"
+        app:layout_constraintTop_toTopOf="@id/iv_coin"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_coin_full_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/medium_margin"
+        android:layout_marginTop="@dimen/medium_margin"
+        style="@style/Subtitle2"
+        tools:text="@string/bitcoin"
+        android:textColor="@color/gray_seal"
+        app:layout_constraintStart_toEndOf="@id/iv_coin"
+        app:layout_constraintTop_toBottomOf="@id/tv_coin_name"
+        app:layout_constraintBottom_toBottomOf="@id/iv_coin"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_profit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Subtitle3"
+        android:text="@string/profit"
+        android:textColor="@color/green_lime"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_coin"
+        app:layout_constraintBottom_toBottomOf="@id/iv_coin"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

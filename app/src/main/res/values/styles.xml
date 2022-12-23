@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Widget.App.Button" parent="Widget.MaterialComponents.Button">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Button</item>
+    </style>
+
+    <style name="Header2" parent="TextAppearance.App">
+        <item name="android:textSize">@dimen/head_04</item>
+    </style>
+
+    <style name="Header1" parent="TextAppearance.App">
+        <item name="android:textSize">@dimen/head_04</item>
+    </style>
+
+    <style name="Subtitle1" parent="TextAppearance.App">
+        <item name="android:textSize">@dimen/paragraph_01</item>
+    </style>
+
+    <style name="Subtitle2" parent="TextAppearance.App">
+        <item name="android:textSize">@dimen/paragraph_02</item>
+    </style>
+
+    <style name="Subtitle3" parent="TextAppearance.App">
+        <item name="android:textSize">@dimen/paragraph_03</item>
+    </style>
+
+    <style name="TextAppearance.App" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textColor">@color/color_on_background</item>
+        <item name="fontFamily">@font/lato_bold</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Button" parent="">
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">@dimen/paragraph_01</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/lato_regular</item>
+        <item name="backgroundTint">@color/gray_pearl</item>
+    </style>
+
+    <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">26dp</item>
+    </style>
+</resources>

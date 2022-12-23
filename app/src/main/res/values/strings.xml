@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">CryptoTracker</string>
+
+    // Trending Crypto
+    <string name="profit">^ 2,41%</string>
+    <string name="coins">$7,542.00</string>
+    <string name="total_coins">Total Coins</string>
+    <string name="today_profit">Today\'s Profit</string>
+    <string name="profile_name">Alejandro Millan</string>
+
+    // Fragment Crypto tracker
+    <string name="crypto_tracker_fragment_title">Trade Now and Get Your Life</string>
+    <string name="my_coins">My Coins</string>
+    <string name="see_all">see all</string>
+    <string name="trending">Trending</string>
+
+    // General
+    <string name="accept">Accept</string>
+
+    // Doom text
+    <string name="BTC">BTC</string>
+    <string name="bitcoin">Bitcoin</string>
+    <string name="tags">Tags</string>
+    <string name="members">Team Members</string>
+</resources>

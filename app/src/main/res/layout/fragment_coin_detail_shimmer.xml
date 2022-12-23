@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/iv_coin_detail_shimmer"
+        android:layout_width="@dimen/coin_image"
+        android:layout_height="@dimen/coin_image"
+        android:layout_marginTop="@dimen/small_margin"
+        android:backgroundTint="@color/gray_pearl"
+        app:cardCornerRadius="@dimen/dp_50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/tv_coin_value_shimmer"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="@dimen/dp_25"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:backgroundTint="@color/gray_pearl"
+        app:cardCornerRadius="@dimen/medium_radius"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_coin_detail_shimmer"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/ll_profit_container_shimmer"
+        android:layout_width="@dimen/dp_60"
+        android:layout_height="@dimen/dp_30"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:backgroundTint="@color/gray_pearl"
+        app:cardCornerRadius="@dimen/medium_radius"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_coin_value_shimmer"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/tv_coin_detail_name_shimmer"
+        android:layout_width="@dimen/dp_120"
+        android:layout_height="@dimen/dp_20"
+        android:layout_margin="@dimen/medium_margin"
+        android:backgroundTint="@color/gray_pearl"
+        app:cardCornerRadius="@dimen/medium_radius"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_profit_container_shimmer"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/tv_coin_description_shimmer"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_30"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:layout_marginEnd="@dimen/medium_margin"
+        android:backgroundTint="@color/gray_pearl"
+        app:cardCornerRadius="@dimen/medium_radius"
+        app:layout_constraintStart_toStartOf="@id/tv_coin_detail_name_shimmer"
+        app:layout_constraintTop_toBottomOf="@id/tv_coin_detail_name_shimmer"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/ll_tags_shimmer"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/large_margin"
+        app:layout_constraintStart_toStartOf="@id/tv_coin_description_shimmer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_coin_description_shimmer">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="@dimen/dp_80"
+            android:layout_height="@dimen/dp_30"
+            android:backgroundTint="@color/gray_pearl"
+            android:layout_marginEnd="@dimen/small_margin"
+            app:cardCornerRadius="@dimen/medium_radius"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_coin_value_shimmer"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="@dimen/dp_80"
+            android:layout_height="@dimen/dp_30"
+            android:backgroundTint="@color/gray_pearl"
+            android:layout_marginEnd="@dimen/small_margin"
+            app:cardCornerRadius="@dimen/medium_radius"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_coin_value_shimmer"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="@dimen/dp_80"
+            android:layout_height="@dimen/dp_30"
+            android:backgroundTint="@color/gray_pearl"
+            android:layout_marginEnd="@dimen/small_margin"
+            app:cardCornerRadius="@dimen/medium_radius"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_coin_value_shimmer"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="@dimen/dp_80"
+            android:layout_height="@dimen/dp_30"
+            android:backgroundTint="@color/gray_pearl"
+            android:layout_marginEnd="@dimen/small_margin"
+            app:cardCornerRadius="@dimen/medium_radius"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_coin_value_shimmer"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="@dimen/dp_80"
+            android:layout_height="@dimen/dp_30"
+            android:backgroundTint="@color/gray_pearl"
+            app:cardCornerRadius="@dimen/medium_radius"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_coin_value_shimmer"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/tv_members_shimmer"
+        android:layout_width="@dimen/dp_120"
+        android:layout_height="@dimen/dp_20"
+        android:layout_marginHorizontal="@dimen/medium_margin"
+        android:layout_marginVertical="@dimen/large_margin"
+        android:backgroundTint="@color/gray_pearl"
+        app:cardCornerRadius="@dimen/medium_radius"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_tags_shimmer"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/large_margin"
+        app:layout_constraintStart_toStartOf="@id/tv_members_shimmer"
+        app:layout_constraintEnd_toEndOf="@id/tv_coin_description_shimmer"
+        app:layout_constraintTop_toBottomOf="@id/tv_members_shimmer">
+
+        <include layout="@layout/item_team_members_shimmer"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

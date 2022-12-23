@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    // Transparent
+    <color name="transparent">#00000000</color>
+
+    // Blue Colors
+    <color name="blue_denim">#141B29</color>
+    <color name="blue_denim_light">#3b4151</color>
+    <color name="blue_denim_dark">#000000</color>
+    <color name="blue_ocean">#028090</color>
+
+    // Green Colors
+    <color name="green_turquoise">#00BFB2</color>
+    <color name="green_turquoise_medium">#01ABA7</color>
+    <color name="green_turquoise_light">#5ef2e4</color>
+    <color name="green_turquoise_dark">#008e83</color>
+    <color name="green_mint">#00BDB0</color>
+    <color name="green_lime">#10DC78</color>
+    <color name="green_honeydew">#DBFBEC</color>
+
+    // Red Colors
+    <color name="red_rose">#F15950</color>
+    <color name="red_coral">#FF9A9A</color>
+
+    // Gray Colors
+    <color name="gray_seal">#8D9096</color>
+    <color name="gray_pearl">#D6D7D8</color>
+    <color name="gray_pearl_translucent">#43D1D1D1</color>
+    <color name="gray_shadow_20_percent">#33484D58</color>
+
+    // White Colors
+    <color name="white">#FFFFFF</color>
+
+    // Black
+    <color name="black">#000000</color>
+
+    // Material Theme Colors
+    <color name="color_primary">@color/white</color>
+    <color name="color_primary_variant">@color/white</color>
+    <color name="color_secondary">@color/green_turquoise</color>
+    <color name="color_secondary_variant">@color/green_turquoise_dark</color>
+
+    <color name="color_background">@color/white</color>
+    <color name="color_surface">@color/white</color>
+    <color name="color_error">@color/red_rose</color>
+
+    <color name="color_on_primary">@color/blue_denim</color>
+    <color name="color_on_secondary">@color/white</color>
+    <color name="color_on_background">@color/blue_denim</color>
+    <color name="color_on_surface">@color/blue_denim</color>
+    <color name="color_on_error">@color/white</color>
+
+    <color name="color_transparent">#00FFFFFF</color>
+
+    <color name="color_divider">#1E000000</color>
+</resources>

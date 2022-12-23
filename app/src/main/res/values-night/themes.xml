@@ -1,0 +1,8 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.CryptoTracker" parent="Theme.CryptoTracker.Dark"/>
+
+    <style name="Theme.CryptoTracker.Dark" parent="Base.Crypto.Theme">
+        <item name="android:statusBarColor">@color/color_background</item>
+        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">false</item>
+    </style>
+</resources>

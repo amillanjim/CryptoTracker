@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    // Material Theme Colors
+    <color name="color_primary">@color/blue_denim</color>
+    <color name="color_primary_variant">@color/blue_denim_dark</color>
+    <color name="color_secondary">@color/green_turquoise</color>
+    <color name="color_secondary_variant">@color/green_turquoise_dark</color>
+
+    <color name="color_background">@color/blue_denim</color>
+    <color name="color_surface">@color/blue_denim</color>
+    <color name="color_on_primary">@color/gray_pearl</color>
+    <color name="color_on_secondary">@color/white</color>
+    <color name="color_on_background">@color/gray_pearl</color>
+    <color name="color_on_surface">@color/gray_pearl</color>
+    <color name="color_on_error">@color/white</color>
+</resources>

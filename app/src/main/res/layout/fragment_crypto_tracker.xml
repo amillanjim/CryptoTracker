@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    android:id="@+id/refresh_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="@dimen/extra_large_padding"
+            android:paddingBottom="@dimen/medium_padding">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/extra_large_padding"
+                android:paddingEnd="@dimen/extra_large_padding"
+                android:layout_marginHorizontal="@dimen/medium_padding"
+                style="@style/Header1"
+                android:text="@string/crypto_tracker_fragment_title"
+                android:textAlignment="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ll_profile_container"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/large_margin"
+                app:layout_constraintStart_toStartOf="@id/tv_title"
+                app:layout_constraintEnd_toEndOf="@id/tv_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_title">
+
+                <include layout="@layout/item_profile"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_my_coins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/large_margin"
+                style="@style/Subtitle1"
+                android:text="@string/my_coins"
+                app:layout_constraintStart_toStartOf="@id/ll_profile_container"
+                app:layout_constraintTop_toBottomOf="@id/ll_profile_container"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_see_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@id/ll_profile_container"
+                app:layout_constraintTop_toTopOf="@id/tv_my_coins">
+
+                <include layout="@layout/see_more"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <include
+                android:id="@+id/shimmer_my_coins"
+                layout="@layout/item_rv_my_coins"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_trending"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/large_margin"
+                style="@style/Subtitle1"
+                android:text="@string/trending"
+                app:layout_constraintStart_toStartOf="@id/ll_profile_container"
+                app:layout_constraintTop_toBottomOf="@id/shimmer_my_coins"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_see_more_trending"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@id/ll_profile_container"
+                app:layout_constraintTop_toTopOf="@id/tv_trending">
+
+                <include layout="@layout/see_more"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <include
+                android:id="@+id/shimmer_trending_coins"
+                layout="@layout/item_rv_trending_coins"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
