@@ -100,7 +100,6 @@ class CryptoTrackerFragment @Inject constructor(private val glide: RequestManage
                 when (result) {
                     is Resource.Success -> {
                         savedCoinsAdapter.submitList(result.data)
-                        hideShimmer()
                     }
                     is Resource.Error -> {
                         hideShimmer()

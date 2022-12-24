@@ -1,5 +1,6 @@
 package com.alexm.cryptotracker.presentation.ui.fragment
 
+import android.util.Log
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.core.content.ContextCompat
@@ -131,8 +132,18 @@ class CoinDetailFragment @Inject constructor(private val glide: RequestManager):
         fragmentJob = lifecycleScope.launchWhenCreated {
             viewModel.saveCoinState.collect{ result ->
                 when (result) {
-                    is Resource.Success -> showSnackBar(isSuccess = true)
-                    is Resource.Error -> showSnackBar(isSuccess = false)
+                    is Resource.Success -> showSavedCoinSnackBar(isSuccess = true)
+                    is Resource.Error -> showSavedCoinSnackBar(isSuccess = false)
+                    else -> {}
+                }
+            }
+        }
+
+        fragmentJob = lifecycleScope.launchWhenCreated {
+            viewModel.deleteCoinState.collect{ result ->
+                when (result) {
+                    is Resource.Success -> showDeletedCoinSnackBar(isSuccess = true)
+                    is Resource.Error -> showDeletedCoinSnackBar(isSuccess = false)
                     else -> {}
                 }
             }
@@ -203,9 +214,19 @@ class CoinDetailFragment @Inject constructor(private val glide: RequestManager):
         binding.clMainDetail.gone()
     }
 
-    private fun showSnackBar(isSuccess: Boolean){
+    private fun showDeletedCoinSnackBar(isSuccess: Boolean){
+        val messageId = if (isSuccess) R.string.coin_deleted
+        else R.string.coin_delete_error
+        showSnackBar(messageId = messageId)
+    }
+
+    private fun showSavedCoinSnackBar(isSuccess: Boolean){
         val messageId = if (isSuccess) R.string.coin_saved
         else R.string.coin_saving_error
+        showSnackBar(messageId = messageId)
+    }
+
+    private fun showSnackBar(messageId: Int){
         Snackbar.make(binding.clMainDetail, messageId, Snackbar.LENGTH_SHORT)
             .show()
     }

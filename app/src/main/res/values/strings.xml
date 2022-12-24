@@ -27,6 +27,9 @@
     <string name="coin_saved">Coin successfully saved</string>
     <string name="coin_saving_error">The coin cannot be saved</string>
 
+    <string name="coin_deleted">Coin successfully deleted</string>
+    <string name="coin_delete_error">The coin cannot be deleted</string>
+
     // Coin
     <string name="percentage_change">^  %1$s</string>
     <string name="coin_value">$  %1$s</string>

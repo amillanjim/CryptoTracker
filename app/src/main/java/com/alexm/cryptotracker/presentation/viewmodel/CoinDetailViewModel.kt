@@ -41,6 +41,9 @@ class CoinDetailViewModel @Inject constructor(
     private val _saveCoinState = MutableStateFlow<Resource<Boolean>>(Resource.Empty())
     val saveCoinState: StateFlow<Resource<Boolean>> = _saveCoinState
 
+    private val _deleteCoinState = MutableStateFlow<Resource<Boolean>>(Resource.Empty())
+    val deleteCoinState: StateFlow<Resource<Boolean>> = _deleteCoinState
+
     fun getTickers(coinId: String){
         _tickersHasFinished.value = false
         viewModelScope.launch {
@@ -79,7 +82,9 @@ class CoinDetailViewModel @Inject constructor(
 
     fun deleteCoin(coin: CoinEntity? = null){
         viewModelScope.launch {
-            deleteCoinUseCase(coin = coin)
+            deleteCoinUseCase(coin = coin).collect{
+                _deleteCoinState.value = it
+            }
         }
     }
 
