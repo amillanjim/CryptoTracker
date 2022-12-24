@@ -38,6 +38,29 @@ fun FragmentActivity.addFragment(
     }
 }
 
+fun FragmentActivity.openFragment(
+    fragmentClass: Class<out Fragment>,
+    replaceFragment: Boolean = false,
+    bundle: Bundle? = null
+){
+    if (replaceFragment) {
+        supportFragmentManager.popBackStack()
+        replaceFragment(
+            fragment = fragmentClass,
+            tag = fragmentClass.canonicalName,
+            backStack = fragmentClass.canonicalName,
+            bundle = bundle
+        )
+    } else {
+        addFragment(
+            fragment = fragmentClass,
+            tag = fragmentClass.canonicalName,
+            backStack = fragmentClass.canonicalName,
+            bundle = bundle
+        )
+    }
+}
+
 fun View.gone() {
     this.visibility = View.GONE
 }
