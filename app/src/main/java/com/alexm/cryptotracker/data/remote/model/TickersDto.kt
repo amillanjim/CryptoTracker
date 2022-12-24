@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class TickersDto (
-  @SerializedName("id") var id: String,
+  @SerializedName("id") var id: String?,
   @SerializedName("name") var name: String? = null,
   @SerializedName("symbol") var symbol: String? = null,
   @SerializedName("rank") var rank: Int? = null,

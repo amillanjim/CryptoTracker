@@ -6,8 +6,9 @@ import javax.inject.Inject
 
 @Entity(tableName = "coins")
 data class CoinEntity @Inject constructor(
-    @PrimaryKey(autoGenerate = false)
-    val coinId: String,
+    @PrimaryKey(autoGenerate = true)
+    val id: Int? = null,
+    val coinId: String?,
     val name: String?,
     val rank: Int?,
     val symbol: String?,
