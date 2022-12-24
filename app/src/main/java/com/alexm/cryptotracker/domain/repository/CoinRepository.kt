@@ -16,9 +16,9 @@ interface CoinRepository {
 
     suspend fun saveCoin(coin: CoinEntity)
 
-    suspend fun deleteCoin(coin: CoinEntity)
+    suspend fun deleteCoin(coin: CoinEntity?)
 
     suspend fun observeAllSavedCoins(): List<CoinEntity>
 
-    suspend fun observeCoinByName(coinName: String): CoinEntity
+    suspend fun observeCoinByName(coinId: String): CoinEntity
 }

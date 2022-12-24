@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/cl_saved_coin"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -43,13 +44,16 @@
         app:layout_constraintBottom_toBottomOf="@id/iv_coin"/>
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tv_coins"
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_price"
+        android:layout_width="@dimen/dp_120"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/medium_margin"
         android:layout_marginVertical="@dimen/large_margin"
         style="@style/Subtitle3"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:text="@string/coins"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_coin"/>
 
@@ -62,5 +66,5 @@
         android:textColor="@color/green_lime"
         app:layout_constraintStart_toEndOf="@id/tv_coin_full_name"
         app:layout_constraintTop_toTopOf="@id/tv_coins"
-        app:layout_constraintBottom_toBottomOf="@id/tv_coins"/>
+        app:layout_constraintBottom_toBottomOf="@id/tv_price"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,6 +7,4 @@
     <item
         android:drawable="@drawable/ic_favorite"
         android:state_checked="true"/>
-
-    <item android:drawable="@drawable/ic_favorite_border"/>
 </selector>

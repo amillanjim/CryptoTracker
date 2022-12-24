@@ -22,4 +22,12 @@
     <string name="bitcoin">Bitcoin</string>
     <string name="tags">Tags</string>
     <string name="members">Team Members</string>
+
+    // Save Coin
+    <string name="coin_saved">Coin successfully saved</string>
+    <string name="coin_saving_error">The coin cannot be saved</string>
+
+    // Coin
+    <string name="percentage_change">^  %1$s</string>
+    <string name="coin_value">$  %1$s</string>
 </resources>

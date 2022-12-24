@@ -25,11 +25,11 @@ class CoinRepositoryImpl @Inject constructor(
 
     override suspend fun saveCoin(coin: CoinEntity) = coinDao.insertCoin(coin)
 
-    override suspend fun deleteCoin(coin: CoinEntity) = coinDao.deleteCoin(coin)
+    override suspend fun deleteCoin(coin: CoinEntity?) = coinDao.deleteCoin(coin)
 
     override suspend fun observeAllSavedCoins(): List<CoinEntity>  =
         coinDao.observeAllSavedCoins()
 
-    override suspend fun observeCoinByName(coinName: String): CoinEntity =
-        coinDao.observeCoinByName(coinName = coinName)
+    override suspend fun observeCoinByName(coinId: String): CoinEntity =
+        coinDao.observeCoinByName(coinId = coinId)
 }

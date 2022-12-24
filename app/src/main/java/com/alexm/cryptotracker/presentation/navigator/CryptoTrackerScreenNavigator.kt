@@ -1,6 +1,10 @@
 package com.alexm.cryptotracker.presentation.navigator
 
 interface CryptoTrackerScreenNavigator {
-    fun navigateToCoinDetail(coinId: String)
+    fun openSplashDialogFragment()
+    fun openErrorDialogFragment()
+    fun popFragment()
+    fun navigateToCryptoTracker()
+    fun navigateToCoinDetail(coinId: String?, isFavorite: Boolean)
     fun navigateBack(backStackName: String? = null)
 }

@@ -6,9 +6,7 @@ import com.alexm.cryptotracker.common.Resource
 import com.alexm.cryptotracker.data.local.CoinEntity
 import com.alexm.cryptotracker.domain.model.CoinDetail
 import com.alexm.cryptotracker.domain.model.Tickers
-import com.alexm.cryptotracker.domain.use_case.GetCoinByIdUseCase
-import com.alexm.cryptotracker.domain.use_case.GetSavedCoinByNameUseCase
-import com.alexm.cryptotracker.domain.use_case.GetTickersByIdUseCase
+import com.alexm.cryptotracker.domain.use_case.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -17,6 +15,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CoinDetailViewModel @Inject constructor(
+    private val saveCoinUseCase: SaveCoinUseCase,
+    private val deleteCoinUseCase: DeleteCoinUseCase,
     private val getCoinByIdUseCase: GetCoinByIdUseCase,
     private val getTickersByIdUseCase: GetTickersByIdUseCase,
     private val getSavedCoinByNameUseCase: GetSavedCoinByNameUseCase
@@ -38,6 +38,9 @@ class CoinDetailViewModel @Inject constructor(
     private val _tickersHasFinished = MutableStateFlow(false)
     val tickersHasFinished: StateFlow<Boolean> = _tickersHasFinished
 
+    private val _saveCoinState = MutableStateFlow<Resource<Boolean>>(Resource.Empty())
+    val saveCoinState: StateFlow<Resource<Boolean>> = _saveCoinState
+
     fun getTickers(coinId: String){
         _tickersHasFinished.value = false
         viewModelScope.launch {
@@ -58,11 +61,31 @@ class CoinDetailViewModel @Inject constructor(
         }
     }
 
-    fun getSavedCoinDetail(coinName: String) {
+    fun getSavedCoinDetail(coinId: String) {
         viewModelScope.launch {
-            getSavedCoinByNameUseCase(coinName = coinName).collect {
+            getSavedCoinByNameUseCase(coinId = coinId).collect {
                 _savedCoinDetailState.value = it
             }
         }
+    }
+
+    fun saveCoin(tickers: Tickers, coinLogo: String){
+        viewModelScope.launch {
+            saveCoinUseCase(tickers = tickers, coinLogo = coinLogo).collect{
+                _saveCoinState.value = it
+            }
+        }
+    }
+
+    fun deleteCoin(coin: CoinEntity? = null){
+        viewModelScope.launch {
+            deleteCoinUseCase(coin = coin)
+        }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        _coinDetailHasFinished.value = false
+        _tickersHasFinished.value = false
     }
 }

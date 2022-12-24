@@ -4,9 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import javax.inject.Inject
 import javax.inject.Provider
-import javax.inject.Singleton
 
-@Singleton
 class CryptoTrackerFragmentFactory @Inject constructor(
     private val providerMap: Map<Class<out Fragment>, @JvmSuppressWildcards Provider<Fragment>>
 ): FragmentFactory(){

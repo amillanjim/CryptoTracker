@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:paddingHorizontal="@dimen/medium_padding"
     android:paddingVertical="@dimen/small_padding"
-    style="@style/Subtitle2"
+    style="@style/Subtitle1"
     android:text="@string/profit"
     android:textColor="@color/green_lime"
     android:background="@drawable/bg_green_profit"/>

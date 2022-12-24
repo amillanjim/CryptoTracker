@@ -21,23 +21,46 @@ import kotlinx.coroutines.flow.collectLatest
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class CryptoTrackerFragment @Inject constructor(
-    private val glide: RequestManager,
-    private val savedCoinsAdapter: SavedCoinsAdapter,
-    private val trendingCoinsAdapter: TrendingCoinsAdapter,
-): BaseFragment<FragmentCryptoTrackerBinding>(FragmentCryptoTrackerBinding::inflate){
+class CryptoTrackerFragment @Inject constructor(private val glide: RequestManager):
+    BaseFragment<FragmentCryptoTrackerBinding>(FragmentCryptoTrackerBinding::inflate){
 
     private lateinit var viewModel: CryptoTrackerViewModel
     private var isFirstLoading: Boolean = false
 
+    private lateinit var trendingCoinsAdapter: TrendingCoinsAdapter
+    private lateinit var savedCoinsAdapter: SavedCoinsAdapter
+
     override fun initView() {
         showShimmer()
         viewModel = ViewModelProvider(requireActivity())[CryptoTrackerViewModel::class.java]
+        setUpGlideImage()
+        initAdapters()
         setUpRecyclerView()
         subscribeToObservers()
         loadInformation()
-        setUpGlideImage()
         binding.refreshLayout.setOnRefreshListener { loadInformation() }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getSavedCoins()
+    }
+
+    private fun initAdapters(){
+        trendingCoinsAdapter = TrendingCoinsAdapter(
+            glide = glide,
+            context = requireContext(),
+            callback = { coinId ->
+                navigator.navigateToCoinDetail(coinId = coinId, isFavorite = false)
+            }
+        )
+        savedCoinsAdapter = SavedCoinsAdapter(
+            glide = glide,
+            context = requireContext(),
+            callback = { coinId ->
+                navigator.navigateToCoinDetail(coinId = coinId, isFavorite = true)
+            }
+        )
     }
 
     private fun setUpRecyclerView(){
@@ -47,7 +70,6 @@ class CryptoTrackerFragment @Inject constructor(
         }
         binding.shimmerMyCoins.rvMyCoins.apply {
             adapter = savedCoinsAdapter
-            layoutManager = LinearLayoutManager(requireActivity())
         }
     }
 
@@ -57,13 +79,13 @@ class CryptoTrackerFragment @Inject constructor(
                 when (result) {
                     is Resource.Success -> {
                         result.data?.let {
-                            trendingCoinsAdapter.submitList(result.data.take(200))
+                            trendingCoinsAdapter.submitList(result.data.take(65))
                         }
                         hideShimmer()
                     }
                     is Resource.Error -> {
                         hideShimmer()
-                        touchActionDelegate?.showErrorDialog()
+                        navigator.openErrorDialogFragment()
                     }
                     is Resource.Loading -> {
                         if (isFirstLoading) showShimmer()
@@ -76,10 +98,13 @@ class CryptoTrackerFragment @Inject constructor(
         fragmentJob = lifecycleScope.launchWhenCreated {
             viewModel.savedCoinsState.collectLatest{ result ->
                 when (result) {
-                    is Resource.Success -> { savedCoinsAdapter.submitList(result.data) }
+                    is Resource.Success -> {
+                        savedCoinsAdapter.submitList(result.data)
+                        hideShimmer()
+                    }
                     is Resource.Error -> {
                         hideShimmer()
-                        touchActionDelegate?.showErrorDialog()
+                        navigator.openErrorDialogFragment()
                     }
                     is Resource.Loading -> {
                         if (isFirstLoading) showShimmer()
@@ -103,11 +128,13 @@ class CryptoTrackerFragment @Inject constructor(
     }
 
     private fun hideShimmer(){
-        binding.refreshLayout.isRefreshing = false
-        binding.shimmerMyCoins.shimmerCoins.gone()
-        binding.shimmerTrendingCoins.shimmerTrendingCoins.gone()
-        binding.shimmerMyCoins.rvMyCoins.visible()
-        binding.shimmerTrendingCoins.rvTrending.visible()
+        if (viewModel.savedCoinsHasFinished.value && viewModel.tickersHasFinished.value) {
+            binding.refreshLayout.isRefreshing = false
+            binding.shimmerMyCoins.shimmerCoins.gone()
+            binding.shimmerTrendingCoins.shimmerTrendingCoins.gone()
+            binding.shimmerMyCoins.rvMyCoins.visible()
+            binding.shimmerTrendingCoins.rvTrending.visible()
+        }
     }
 
     private fun showShimmer(){

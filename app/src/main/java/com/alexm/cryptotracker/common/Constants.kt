@@ -12,6 +12,10 @@ object Constants {
 
     const val COIN_ID = "coinId"
 
+    const val DEFAULT_COIN_ID = "btc-bitcoin"
+
+    const val IS_FAVORITE_COIN = "is favorite coin"
+
     const val TIME_OUT = 10L
 
     // Error values

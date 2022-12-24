@@ -7,12 +7,12 @@
     android:layout_height="?attr/actionBarSize">
 
     <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/ibBack"
+        android:id="@+id/ib_back"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:padding="@dimen/medium_padding"
         android:src="@drawable/ic_left_arrow"
-        android:background="@color/transparent"
+        android:background="@drawable/bg_rounded_transparent_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
@@ -23,18 +23,19 @@
         android:layout_height="wrap_content"
         style="@style/Subtitle3"
         tools:text="Ethereum"
-        app:layout_constraintStart_toEndOf="@id/ibBack"
-        app:layout_constraintEnd_toStartOf="@id/cbFavorite"
+        app:layout_constraintStart_toEndOf="@id/ib_back"
+        app:layout_constraintEnd_toStartOf="@id/cb_favorite"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/cbFavorite"
+        android:id="@+id/cb_favorite"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_marginEnd="@dimen/small_margin"
         android:button="@drawable/states_cb_favorite"
         android:buttonTint="@color/color_on_background"
+        app:checkedState="checked"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>

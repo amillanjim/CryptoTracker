@@ -9,11 +9,11 @@ import com.alexm.cryptotracker.presentation.ui.fragment.CryptoTrackerFragment
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
+import dagger.hilt.android.components.ActivityComponent
 import dagger.multibindings.IntoMap
 
 @Module
-@InstallIn(SingletonComponent::class)
+@InstallIn(ActivityComponent::class)
 abstract class FragmentFactoryModule {
 
     @Binds

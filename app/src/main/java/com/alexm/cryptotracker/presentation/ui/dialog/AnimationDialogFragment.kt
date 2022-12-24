@@ -4,9 +4,16 @@ import android.animation.Animator
 import com.alexm.cryptotracker.R
 import com.alexm.cryptotracker.base.BaseDialogFragment
 import com.alexm.cryptotracker.databinding.DialogFragmentAnimationBinding
+import com.alexm.cryptotracker.presentation.navigator.CryptoTrackerScreenNavigator
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class AnimationDialogFragment: BaseDialogFragment<DialogFragmentAnimationBinding>
     (DialogFragmentAnimationBinding::inflate) {
+
+    @Inject
+    lateinit var navigator: CryptoTrackerScreenNavigator
 
     override fun initView() {
         binding.animationView.setAnimation(R.raw.splash_loader)
@@ -15,13 +22,8 @@ class AnimationDialogFragment: BaseDialogFragment<DialogFragmentAnimationBinding
             override fun onAnimationRepeat(p0: Animator) {}
             override fun onAnimationCancel(p0: Animator) {}
             override fun onAnimationEnd(p0: Animator) {
-                loadNextFragment()
+                navigator.navigateToCryptoTracker()
             }
         })
-    }
-
-    private fun loadNextFragment(){
-        dismissListener?.openCryptoFragment()
-        //dismissListener?.openDetailFragment()
     }
 }

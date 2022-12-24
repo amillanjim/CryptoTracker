@@ -20,9 +20,9 @@ abstract class BaseActivity<VB: ViewBinding>: AppCompatActivity() {
     lateinit var fragmentFactory: CryptoTrackerFragmentFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        injectFactoryFragments()
         super.onCreate(savedInstanceState)
         setUpContentView()
-        injectFactoryFragments()
         initView()
     }
 
@@ -39,8 +39,4 @@ abstract class BaseActivity<VB: ViewBinding>: AppCompatActivity() {
     }
 
     open fun initView(){}
-    protected fun showLoading(){}
-    protected fun closeLoading(){}
-    protected fun showAnimation(){}
-    protected fun closeAnimation(){}
 }

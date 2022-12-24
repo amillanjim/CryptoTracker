@@ -9,7 +9,7 @@ interface CoinDao {
     suspend fun insertCoin(coin: CoinEntity)
 
     @Delete
-    suspend fun deleteCoin(coin: CoinEntity)
+    suspend fun deleteCoin(coin: CoinEntity?)
 
     @Query("""
             SELECT * 
@@ -20,7 +20,7 @@ interface CoinDao {
     @Query("""
             SELECT *
             FROM coins 
-            WHERE name = :coinName
+            WHERE coinId = :coinId
            """)
-    suspend fun observeCoinByName(coinName: String): CoinEntity
+    suspend fun observeCoinByName(coinId: String): CoinEntity
 }
