@@ -228,6 +228,8 @@ class CoinDetailFragment @Inject constructor(private val glide: RequestManager):
 
     private fun showSnackBar(messageId: Int){
         Snackbar.make(binding.clMainDetail, messageId, Snackbar.LENGTH_SHORT)
+            .setBackgroundTint(ContextCompat.getColor(requireContext(), R.color.gray_dark_ocean))
+            .setTextColor(ContextCompat.getColor(requireContext(), R.color.gray_pearl))
             .show()
     }
 }

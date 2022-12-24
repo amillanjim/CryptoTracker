@@ -25,6 +25,7 @@
     // Gray Colors
     <color name="gray_seal">#8D9096</color>
     <color name="gray_pearl">#D6D7D8</color>
+    <color name="gray_dark_ocean">#102044</color>
     <color name="gray_pearl_translucent">#43D1D1D1</color>
     <color name="gray_shadow_20_percent">#33484D58</color>
 
