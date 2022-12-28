@@ -1,7 +1,7 @@
 package com.alexm.cryptotracker.presentation.ui.fragment
 
 import android.widget.ImageView
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alexm.cryptotracker.R
@@ -24,7 +24,7 @@ import javax.inject.Inject
 class CryptoTrackerFragment @Inject constructor(private val glide: RequestManager):
     BaseFragment<FragmentCryptoTrackerBinding>(FragmentCryptoTrackerBinding::inflate){
 
-    private lateinit var viewModel: CryptoTrackerViewModel
+    private val viewModel: CryptoTrackerViewModel by viewModels()
     private var isFirstLoading: Boolean = false
 
     private lateinit var trendingCoinsAdapter: TrendingCoinsAdapter
@@ -32,7 +32,6 @@ class CryptoTrackerFragment @Inject constructor(private val glide: RequestManage
 
     override fun initView() {
         showShimmer()
-        viewModel = ViewModelProvider(requireActivity())[CryptoTrackerViewModel::class.java]
         setUpGlideImage()
         initAdapters()
         setUpRecyclerView()

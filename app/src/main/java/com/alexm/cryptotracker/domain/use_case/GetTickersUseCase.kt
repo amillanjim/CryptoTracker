@@ -1,7 +1,6 @@
 package com.alexm.cryptotracker.domain.use_case
 
-import android.util.Log
-import com.alexm.cryptotracker.common.ErrorHandler
+import com.alexm.cryptotracker.base.BaseErrorHandler
 import com.alexm.cryptotracker.common.Resource
 import com.alexm.cryptotracker.data.mapper.toTickers
 import com.alexm.cryptotracker.di.app.DefaultDispatcher
@@ -21,12 +20,11 @@ class GetTickerUseCase @Inject constructor(
         try {
             emit(Resource.Loading())
             val tickers = coinRepository.getTickers().map { it.toTickers() }
-            emit(Resource.Success<List<Tickers>>(tickers))
+            emit(Resource.Success(tickers))
         } catch (e: Exception) {
-            Log.d("CryptoApp", "error: $e")
             emit(
-                Resource.Error<List<Tickers>>(
-                    message = ErrorHandler.handleExceptionMessage(exception = e))
+                Resource.Error(
+                    message = BaseErrorHandler.handleExceptionMessage(exception = e))
             )
         }
     }.flowOn(dispatcher)

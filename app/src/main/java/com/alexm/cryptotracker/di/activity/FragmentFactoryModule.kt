@@ -4,6 +4,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import com.alexm.cryptotracker.di.annotation.FragmentKey
 import com.alexm.cryptotracker.presentation.ui.dialog.AnimationDialogFragment
+import com.alexm.cryptotracker.presentation.ui.dialog.ErrorDialogFragment
 import com.alexm.cryptotracker.presentation.ui.fragment.CoinDetailFragment
 import com.alexm.cryptotracker.presentation.ui.fragment.CryptoTrackerFragment
 import dagger.Binds
@@ -30,4 +31,9 @@ abstract class FragmentFactoryModule {
     @IntoMap
     @FragmentKey(AnimationDialogFragment::class)
     abstract fun bindLoadingDialogFragment(fragment: AnimationDialogFragment): DialogFragment
+
+    @Binds
+    @IntoMap
+    @FragmentKey(ErrorDialogFragment::class)
+    abstract fun bindErrorDialogFragment(fragment: ErrorDialogFragment): DialogFragment
 }

@@ -1,6 +1,6 @@
 package com.alexm.cryptotracker.domain.use_case
 
-import com.alexm.cryptotracker.common.ErrorHandler
+import com.alexm.cryptotracker.base.BaseErrorHandler
 import com.alexm.cryptotracker.common.Resource
 import com.alexm.cryptotracker.data.mapper.toCoin
 import com.alexm.cryptotracker.di.app.DefaultDispatcher
@@ -19,11 +19,11 @@ class SaveCoinUseCase @Inject constructor(
     operator fun invoke(tickers: Tickers, coinLogo: String): Flow<Resource<Boolean>> = flow {
         try {
             coinRepository.saveCoin(coin = tickers.toCoin(logo = coinLogo))
-            emit(Resource.Success<Boolean>(true))
+            emit(Resource.Success(true))
         } catch (e: Exception) {
             emit(
-                Resource.Error<Boolean>(
-                message = ErrorHandler.handleExceptionMessage(exception = e))
+                Resource.Error(
+                message = BaseErrorHandler.handleExceptionMessage(exception = e))
             )
         }
     }.flowOn(dispatcher)

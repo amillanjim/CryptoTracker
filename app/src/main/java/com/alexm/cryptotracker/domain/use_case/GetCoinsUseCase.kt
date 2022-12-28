@@ -1,7 +1,7 @@
 package com.alexm.cryptotracker.domain.use_case
 
 import com.alexm.cryptotracker.di.app.DefaultDispatcher
-import com.alexm.cryptotracker.common.ErrorHandler
+import com.alexm.cryptotracker.base.BaseErrorHandler
 import com.alexm.cryptotracker.common.Resource
 import com.alexm.cryptotracker.data.mapper.toCoin
 import com.alexm.cryptotracker.domain.model.Coin
@@ -20,10 +20,10 @@ class GetCoinsUseCase @Inject constructor(
         try {
             emit(Resource.Loading())
             val coins = repository.getCoins().map { it.toCoin() }
-            emit(Resource.Success<List<Coin>>(coins))
+            emit(Resource.Success(coins))
         } catch (e: Exception) {
-            emit(Resource.Error<List<Coin>>(
-                message = ErrorHandler.handleExceptionMessage(exception = e))
+            emit(Resource.Error(
+                message = BaseErrorHandler.handleExceptionMessage(exception = e))
             )
         }
     }.flowOn(dispatcher)

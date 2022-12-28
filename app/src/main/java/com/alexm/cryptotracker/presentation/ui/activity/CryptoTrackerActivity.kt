@@ -1,9 +1,11 @@
 package com.alexm.cryptotracker.presentation.ui.activity
 
 import android.view.LayoutInflater
+import androidx.activity.viewModels
 import com.alexm.cryptotracker.base.BaseActivity
 import com.alexm.cryptotracker.databinding.ActivityCryptoTrackerBinding
 import com.alexm.cryptotracker.presentation.navigator.CryptoTrackerScreenNavigator
+import com.alexm.cryptotracker.presentation.viewmodel.CryptoTrackerActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -16,5 +18,15 @@ class CryptoTrackerActivity(
     @Inject
     lateinit var navigator: CryptoTrackerScreenNavigator
 
-    override fun initView() = navigator.openSplashDialogFragment()
+    private val trackerActivityViewModel: CryptoTrackerActivityViewModel by viewModels()
+
+    override fun initView() {
+        val trackerActivityHasBeenLaunch = trackerActivityViewModel.trackerFragmentHasBeenLaunch.value
+        if (trackerActivityHasBeenLaunch){
+            navigator.navigateToCryptoTracker()
+        } else {
+            navigator.openSplashDialogFragment()
+            trackerActivityViewModel.updateTrackerFragmentState()
+        }
+    }
 }

@@ -1,10 +1,9 @@
 package com.alexm.cryptotracker.presentation.ui.fragment
 
-import android.util.Log
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alexm.cryptotracker.R
@@ -32,7 +31,7 @@ import javax.inject.Inject
 class CoinDetailFragment @Inject constructor(private val glide: RequestManager):
     BaseFragment<FragmentCoinDetailBinding>(FragmentCoinDetailBinding::inflate) {
 
-    private lateinit var viewModel: CoinDetailViewModel
+    private val viewModel: CoinDetailViewModel by viewModels()
     private lateinit var coinId: String
     private lateinit var logo: String
     private lateinit var teamMembersAdapter: TeamMembersAdapter
@@ -44,7 +43,6 @@ class CoinDetailFragment @Inject constructor(private val glide: RequestManager):
 
     override fun initView() {
         showShimmer()
-        viewModel = ViewModelProvider(requireActivity())[CoinDetailViewModel::class.java]
         coinId = arguments?.getString(Constants.COIN_ID, Constants.DEFAULT_COIN_ID )
             ?: Constants.DEFAULT_COIN_ID
         isFavorite = arguments?.getBoolean(Constants.IS_FAVORITE_COIN) ?: false
