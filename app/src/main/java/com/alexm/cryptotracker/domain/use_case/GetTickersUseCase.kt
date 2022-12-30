@@ -2,8 +2,9 @@ package com.alexm.cryptotracker.domain.use_case
 
 import com.alexm.cryptotracker.base.BaseErrorHandler
 import com.alexm.cryptotracker.common.Resource
+import com.alexm.cryptotracker.common.flowExceptionHandler
 import com.alexm.cryptotracker.data.mapper.toTickers
-import com.alexm.cryptotracker.di.app.DefaultDispatcher
+import com.alexm.cryptotracker.di.app.IoDispatcher
 import com.alexm.cryptotracker.domain.model.Tickers
 import com.alexm.cryptotracker.domain.repository.CoinRepository
 import kotlinx.coroutines.CoroutineDispatcher
@@ -14,7 +15,7 @@ import javax.inject.Inject
 
 class GetTickerUseCase @Inject constructor(
     private val coinRepository: CoinRepository,
-    @DefaultDispatcher private val dispatcher: CoroutineDispatcher
+    @IoDispatcher private val dispatcher: CoroutineDispatcher
 ){
     operator fun invoke(): Flow<Resource<List<Tickers>>> = flow {
         try {
@@ -27,5 +28,5 @@ class GetTickerUseCase @Inject constructor(
                     message = BaseErrorHandler.handleExceptionMessage(exception = e))
             )
         }
-    }.flowOn(dispatcher)
+    }.flowOn(dispatcher + flowExceptionHandler)
 }

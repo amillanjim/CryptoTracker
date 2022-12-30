@@ -1,6 +1,7 @@
 package com.alexm.cryptotracker.presentation.navigator
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import com.alexm.cryptotracker.common.Constants

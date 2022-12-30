@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.alexm.cryptotracker.presentation.navigator.CryptoTrackerScreenNavigator
@@ -36,7 +37,17 @@ abstract class BaseFragment<VB: ViewBinding>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        addOnBackPressedCallback()
         initView()
+    }
+
+    private fun addOnBackPressedCallback(){
+        val callback = object : OnBackPressedCallback(true){
+            override fun handleOnBackPressed() {
+                onBackPressed()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(callback)
     }
 
     open fun initView(){}
@@ -44,6 +55,8 @@ abstract class BaseFragment<VB: ViewBinding>(
     protected fun showAnimation(){}
 
     protected fun closeAnimation(){}
+
+    open fun onBackPressed() = navigator.navigateBack()
 
     override fun onDestroyView() {
         super.onDestroyView()
