@@ -7,10 +7,7 @@ import com.alexm.cryptotracker.data.local.CoinEntity
 import com.alexm.cryptotracker.di.app.IoDispatcher
 import com.alexm.cryptotracker.domain.repository.CoinRepository
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.retryWhen
+import kotlinx.coroutines.flow.*
 import java.sql.SQLException
 import javax.inject.Inject
 
@@ -19,15 +16,13 @@ class GetSavedCoinByNameUseCase @Inject constructor(
     @IoDispatcher private val dispatcher: CoroutineDispatcher
 ){
     operator fun invoke(coinId: String): Flow<Resource<CoinEntity>> = flow {
-        try {
-            emit(Resource.Loading())
-            val coin = coinRepository.observeCoinByName(coinId = coinId)
-            emit(Resource.Success(coin))
-        } catch (e: Exception) {
-            emit(Resource.Error(
-                message = BaseErrorHandler.handleExceptionMessage(exception = e))
-            )
-        }
+        emit(Resource.Empty())
+        val coin = coinRepository.observeCoinByName(coinId = coinId)
+        emit(Resource.Success(coin))
+    }.catch {e ->
+        emit(Resource.Error(
+            message = BaseErrorHandler.handleExceptionMessage(exception = e as Exception))
+        )
     }.retryWhen{ cause, attempt -> cause is SQLException || attempt < 2
     }.flowOn(dispatcher + flowExceptionHandler)
 }

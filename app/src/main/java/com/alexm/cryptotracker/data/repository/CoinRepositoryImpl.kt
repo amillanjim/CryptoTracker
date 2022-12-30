@@ -20,8 +20,7 @@ class CoinRepositoryImpl @Inject constructor(
 
     override suspend fun getCoins(): List<CoinDto> = api.getCoins()
 
-    override suspend fun getCoinById(coinId: String): CoinDetailDto =
-        api.getCoinById(coinId)
+    override suspend fun getCoinById(coinId: String): CoinDetailDto =  api.getCoinById(coinId)
 
     override suspend fun saveCoin(coin: CoinEntity) = coinDao.insertCoin(coin)
 

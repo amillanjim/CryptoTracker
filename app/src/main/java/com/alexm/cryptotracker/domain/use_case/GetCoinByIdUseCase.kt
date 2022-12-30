@@ -9,6 +9,7 @@ import com.alexm.cryptotracker.domain.model.CoinDetail
 import com.alexm.cryptotracker.domain.repository.CoinRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
@@ -18,14 +19,12 @@ class GetCoinByIdUseCase @Inject constructor(
     @IoDispatcher private val dispatcher: CoroutineDispatcher
 ) {
     operator fun invoke(coinId: String): Flow<Resource<CoinDetail>> = flow {
-        try {
-            emit(Resource.Loading())
-            val coin = repository.getCoinById(coinId = coinId).toCoinDetail()
-            emit(Resource.Success(coin))
-        } catch (e: Exception) {
-            emit(Resource.Error(
-                message = BaseErrorHandler.handleExceptionMessage(exception = e))
-            )
-        }
+        emit(Resource.Loading())
+        val coin = repository.getCoinById(coinId = coinId).toCoinDetail()
+        emit(Resource.Success(coin))
+    }.catch {e ->
+        emit(Resource.Error(
+            message = BaseErrorHandler.handleExceptionMessage(exception = e as Exception))
+        )
     }.flowOn(dispatcher + flowExceptionHandler)
 }

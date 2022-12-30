@@ -17,15 +17,14 @@ class SaveCoinUseCase @Inject constructor(
     @IoDispatcher private val dispatcher: CoroutineDispatcher
 ){
     operator fun invoke(tickers: Tickers, coinLogo: String): Flow<Resource<Boolean>> = flow {
-        try {
-            coinRepository.saveCoin(coin = tickers.toCoin(logo = coinLogo))
-            emit(Resource.Success(true))
-        } catch (e: Exception) {
-            emit(
-                Resource.Error(
-                    message = BaseErrorHandler.handleExceptionMessage(exception = e))
-            )
-        }
+        emit(Resource.Empty())
+        coinRepository.saveCoin(coin = tickers.toCoin(logo = coinLogo))
+        emit(Resource.Success(true))
+    }.catch {e ->
+        emit(
+            Resource.Error(
+                message = BaseErrorHandler.handleExceptionMessage(exception = e as Exception))
+        )
     }.retryWhen{ cause, attempt -> cause is SQLException || attempt < 2
     }.flowOn(dispatcher + flowExceptionHandler)
 }
