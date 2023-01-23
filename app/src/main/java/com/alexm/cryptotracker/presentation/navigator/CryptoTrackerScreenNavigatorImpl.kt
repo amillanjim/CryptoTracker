@@ -1,11 +1,11 @@
 package com.alexm.cryptotracker.presentation.navigator
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import com.alexm.cryptotracker.common.Constants
 import com.alexm.cryptotracker.common.openFragment
+import com.alexm.cryptotracker.common.showBottomSheet
 import com.alexm.cryptotracker.presentation.ui.dialog.AnimationDialogFragment
 import com.alexm.cryptotracker.presentation.ui.dialog.ErrorDialogFragment
 import com.alexm.cryptotracker.presentation.ui.fragment.CoinDetailFragment
@@ -29,6 +29,16 @@ class CryptoTrackerScreenNavigatorImpl @Inject constructor(
             fragmentClass = CryptoTrackerFragment::class.java,
             replaceFragment = true
         )
+
+    override fun openBottomSheetFragment(
+        title: String,
+        body: String
+    ) {
+        activity.showBottomSheet(
+            bsTitle = title,
+            bsBody = body
+        )
+    }
 
     override fun navigateToCoinDetail(coinId: String?, isFavorite: Boolean) {
         val bundle = Bundle()

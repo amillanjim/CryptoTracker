@@ -1,4 +1,4 @@
-package com.alexm.cryptotracker.viewmodel
+package com.alexm.cryptotracker.presentation.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.alexm.cryptotracker.rules.MainCoroutineRule

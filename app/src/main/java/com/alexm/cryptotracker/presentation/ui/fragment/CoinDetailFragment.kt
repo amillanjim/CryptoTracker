@@ -55,7 +55,14 @@ class CoinDetailFragment @Inject constructor(private val glide: RequestManager):
     }
 
     private fun initAdapters(){
-        teamMembersAdapter = TeamMembersAdapter()
+        teamMembersAdapter = TeamMembersAdapter(
+            callback = { name, position ->
+                navigator.openBottomSheetFragment(
+                    name,
+                    position
+                )
+            }
+        )
         tagsAdapter = TagsAdapter()
     }
 

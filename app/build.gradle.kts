@@ -25,16 +25,25 @@ android {
             proguardFiles("proguard-android.txt", "proguard-rules.pro")
         }
     }
+
     buildFeatures {
         viewBinding = true
+        compose = true
     }
+
+    composeOptions{
+        kotlinCompilerExtensionVersion = "1.4.0"
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    
     packagingOptions {
         resources {
             excludes += "/META-INF/INDEX.LIST"
@@ -99,6 +108,14 @@ dependencies {
     // Lottie
     implementation("com.airbnb.android:lottie:3.5.0")
 
+    // Compose
+    val composeUiVersion = "1.3.1"
+    val activityComposeVersion = "1.6.0"
+    implementation("androidx.compose.ui:ui:$composeUiVersion")
+    implementation("androidx.activity:activity-compose:$activityComposeVersion")
+    implementation("androidx.compose.ui:ui-tooling-preview:$composeUiVersion")
+    implementation("androidx.compose.material:material:$composeUiVersion")
+
     // Local Unit Tests
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.4")
@@ -109,7 +126,7 @@ dependencies {
     testImplementation("com.google.truth:truth:1.1.3")
     testImplementation("org.mockito:mockito-core:4.10.0")
 
-    // Instrumented Unit Tests
+    // Instrumented Unit Tests-
     androidTestImplementation("junit:junit:4.13.2")
     androidTestImplementation("com.linkedin.dexmaker:dexmaker-mockito:2.28.3")
     androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")

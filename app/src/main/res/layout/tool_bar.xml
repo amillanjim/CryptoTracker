@@ -10,12 +10,13 @@
         android:id="@+id/ib_back"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:padding="@dimen/medium_padding"
-        android:src="@drawable/ic_left_arrow"
         android:background="@drawable/bg_rounded_transparent_button"
+        android:padding="@dimen/small_padding"
+        android:src="@drawable/ic_left_arrow"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_title"
@@ -23,8 +24,8 @@
         android:layout_height="wrap_content"
         style="@style/Subtitle3"
         tools:text="Ethereum"
-        app:layout_constraintStart_toEndOf="@id/ib_back"
-        app:layout_constraintEnd_toStartOf="@id/cb_favorite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
